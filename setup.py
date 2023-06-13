@@ -100,7 +100,7 @@ class Puzzle:
                 if isinstance(square.val, Digit):
                     s = s + str(square.val)
                 else:
-                    s = s + '_'
+                    s = s + '\x1B[4m' + str(len(square.val)) + '\x1B[0m'
                 if col % 3 == 0:
                     s = s + ' '
             s = s + '\n'
