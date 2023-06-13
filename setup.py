@@ -37,8 +37,6 @@ class Puzzle:
 
                 curr_row = self.rows[row]
                 curr_col = self.cols[col]
-                print(col)
-                print(row)
 
                 square = Square(curr_row, curr_col, box, [Digit(i) for i in range(1, 10)])
                 box.squares.append(square)
@@ -86,6 +84,30 @@ class Puzzle:
                     val.remove(pos_val)
             if len(val) == 1:
                 self.set_square1(square, val[0])
+    
+    def finished(self) -> bool:
+        for s in self.squares:
+            if not isinstance(s.val, Digit):
+                return False
+        return True
+    
+    def __str__(self) -> str:
+        s = ""
+        blank_line = str(" " * 11) + '\n'
+        for row in range(1, 10):
+            for col in range(1, 10):
+                square = self.get_square(Id(row), Id(col))
+                if isinstance(square.val, Digit):
+                    s = s + str(square.val)
+                else:
+                    s = s + '_'
+                if col % 3 == 0:
+                    s = s + ' '
+            s = s + '\n'
+            if row % 3 == 0:
+                s = s + blank_line
+        return s
+
 
 class Group:
 
