@@ -1,3 +1,3 @@
 import tests, algos
 
-tests.Util.run_test(tests.Easy.easy1(), algos.naive)
+tests.Util.run_test(tests.Hard.hard1(), algos.naive)
